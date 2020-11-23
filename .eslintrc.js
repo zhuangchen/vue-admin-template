@@ -7,8 +7,12 @@ module.exports = {
       jsx: true
     },
   },
-  'extends': [
+  extends: [
     '@vue/typescript',
     'plugin:vue/vue3-recommended'
-  ]
+  ],
+  rules: {
+    quotes: ["error", "single"],
+    semi: ["error", "always"]
+  }
 };

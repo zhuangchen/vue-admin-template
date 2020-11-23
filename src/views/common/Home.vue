@@ -1,9 +1,9 @@
 <template>
-  <router-view />
+  home
 </template>
 
 <script lang="ts">
 import { Vue } from 'vue-class-component';
-import store from '@/store';
+
 export default class App extends Vue {}
 </script>
