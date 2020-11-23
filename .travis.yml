@@ -6,8 +6,6 @@ install:
 script:
   - npm run build
 deploy:
-  name: $NAME
-  email: $EMAIL
   provider: pages
   skip-cleanup: true
   local_dir: dist
