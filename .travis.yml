@@ -8,7 +8,6 @@ script:
 deploy:
   name: $NAME
   email: $EMAIL
-  fqdn: $DOMAIN
   provider: pages
   skip-cleanup: true
   local_dir: dist
