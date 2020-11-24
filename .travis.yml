@@ -5,7 +5,11 @@ install:
   - npm ci
 script:
   - npm run build
+after_success:
+  - source deploy.sh 
 deploy:
+  name: $NAME
+  email: $EMAIL
   provider: pages
   skip-cleanup: true
   local_dir: dist
