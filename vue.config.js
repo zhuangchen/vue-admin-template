@@ -1,4 +1,5 @@
 // vue.config.js
+const isTravisCI = () => 'TRAVIS' in process.env && 'CI' in process.env
 module.exports = {
   pages: {
     index: {
@@ -15,6 +16,7 @@ module.exports = {
       title: '后台管理系统',
     },
   },
+  publicPath: isTravisCI() ? '/vue-admin-template/' : '/',
   lintOnSave: true,
   assetsDir: 'static',
   runtimeCompiler: true,
@@ -36,7 +38,7 @@ module.exports = {
     // 代理配置
     proxy: {
       "/": {
-        target: "http://127.0.0.1:8080/", // 代理到本地后台开发
+        target: "https://reqres.in/", // 代理到本地后台开发
         changeOrigin: true,
         secure: false,
       }
