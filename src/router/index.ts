@@ -3,10 +3,10 @@ import commonRoutes from './common';
 // router instance
 let router = createRouter({
     history: createWebHashHistory(),
-    routes: commonRoutes,
+    routes: commonRoutes
 });
 // router guard
-router.beforeEach((_to, _from,next) => {
+router.beforeEach((_to, _from, next) => {
     next();
 });
 router.afterEach(() => {

@@ -4,12 +4,12 @@ import user from './user-module';
 import ui from './ui-module';
 const debug = process.env.NODE_ENV === 'development';
 const store = createStore({
-  modules: {
-    user,
-    ui,
-    layout
-  },
-  strict: debug,
-  plugins: debug ? [createLogger({})] : [],
+    modules: {
+        user,
+        ui,
+        layout
+    },
+    strict: debug,
+    plugins: debug ? [createLogger({})] : []
 });
 export default store;

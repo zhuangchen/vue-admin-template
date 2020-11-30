@@ -7,7 +7,7 @@ const fetchUserById = (id: number) => {
     }
     const axiosConfig = Object.assign({
         url: '/api/users/' + id,
-        method: 'get',
+        method: 'get'
     });
     return new Promise<IBackData>((resolve, reject) => {
         httpServie(axiosConfig).then((res) => {

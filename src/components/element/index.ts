@@ -12,8 +12,8 @@ import {
     Tag,
     Icon,
     Row,
-    Col,
-  } from 'element-plus';
+    Col
+} from 'element-plus';
 export default [
   
 ];
