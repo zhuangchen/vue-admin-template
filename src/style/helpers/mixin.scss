@@ -1,0 +1,174 @@
+// 以下为顶部导航栏区域颜色配置
+@mixin header_bg_color {
+  background-color: $--header-background-color--default;
+
+  [data-headerbg="blue"] & {
+    background-color: $--header-background-color--blue;
+  }
+
+  [data-headerbg="dark"] & {
+    background-color: $--header-background-color--dark;
+  }
+
+  [data-headerbg="official"] & {
+    background-color: $--header-background-color--official;
+  }
+
+  [data-headerbg="green"] & {
+    background-color: $--header-background-color--green;
+  }
+}
+
+@mixin header_bg_color--active {
+  background-color: $--header-active-background-color--blue;
+
+  [data-headerbg="blue"] & {
+    background-color: $--header-active-background-color--default;
+  }
+
+  [data-headerbg="dark"] & {
+    background-color: $--header-active-background-color--default;
+  }
+
+  [data-headerbg="official"] & {
+    background-color: $--header-active-background-color--default;
+  }
+
+  [data-headerbg="green"] & {
+    background-color: $--header-active-background-color--default;
+  }
+}
+
+@mixin header_font_color($bg: false) {
+  color: $--header-font-color--black;
+
+  @if ($bg) {
+    background-color: $--header-font-color--black;
+  }
+
+  [data-headerbg="blue"] & {
+    color: $--header-font-color--white;
+
+    @if ($bg) {
+      background-color: $--header-font-color--white;
+    }
+  }
+
+  [data-headerbg="dark"] & {
+    color: $--header-font-color--white;
+
+    @if ($bg) {
+      background-color: $--header-font-color--white;
+    }
+  }
+
+  [data-headerbg="official"] & {
+    color: $--header-font-color--white;
+
+    @if ($bg) {
+      background-color: $--header-font-color--white;
+    }
+  }
+
+  [data-headerbg="green"] & {
+    color: $--header-font-color--white;
+
+    @if ($bg) {
+      background-color: $--header-font-color--white;
+    }
+  }
+}
+
+// 以下为侧边栏区域颜色配置
+@mixin sidebar_bg_color {
+  background-color: $--aside-background-color--default;
+
+  [data-sidebarbg="blue"] & {
+    background-color: $--aside-background-color--blue;
+  }
+
+  [data-sidebarbg="dark"] & {
+    background-color: $--aside-background-color--dark;
+  }
+
+  [data-sidebarbg="official"] & {
+    background-color: $--aside-background-color--official;
+  }
+
+  [data-sidebarbg="green"] & {
+    background-color: $--aside-background-color--green;
+  }
+}
+
+@mixin sidebar_bg_color--active {
+  background-color: $--aside-active-background-color--blue;
+
+  [data-sidebarbg="blue"] & {
+    background-color: $--aside-active-background-color--default;
+  }
+
+  [data-sidebarbg="dark"] & {
+    background-color: $--aside-active-background-color--default;
+  }
+
+  [data-sidebarbg="official"] & {
+    background-color: $--aside-active-background-color--default;
+  }
+
+  [data-sidebarbg="green"] & {
+    background-color: $--aside-active-background-color--default;
+  }
+}
+
+@mixin sidebar_font_color() {
+  color: $--aside-font-color--black;
+
+  [data-sidebarbg="blue"] & {
+    color: $--aside-font-color--white;
+  }
+
+  [data-sidebarbg="dark"] & {
+    color: $--aside-font-color--white;
+  }
+
+  [data-sidebarbg="official"] & {
+    color: $--aside-font-color--white;
+  }
+
+  [data-sidebarbg="green"] & {
+    color: $--aside-font-color--white;
+  }
+}
+
+// 通用混合定义
+@mixin font_color($color) {
+  color: $color;
+
+  [data-theme="theme1"] & {
+    color: $font-color-theme1;
+  }
+
+  [data-theme="theme2"] & {
+    color: $font-color-theme2;
+  }
+
+  [data-theme="theme3"] & {
+    color: $font-color-theme3;
+  }
+}
+
+@mixin bg_color($color) {
+  background-color: $color;
+
+  [data-theme="theme1"] & {
+    background-color: $background-color-theme1;
+  }
+
+  [data-theme="theme2"] & {
+    background-color: $background-color-theme2;
+  }
+
+  [data-theme="theme3"] & {
+    background-color: $background-color-theme3;
+  }
+}

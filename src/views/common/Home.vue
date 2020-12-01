@@ -1,5 +1,5 @@
 <template>
-  测试继承自动部署
+  主页
 </template>
 
 <script lang="ts">

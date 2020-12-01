@@ -1,0 +1,105 @@
+.layout-header {
+    @include header_bg_color();
+    height: 50px;
+    line-height: 50px;
+    width: 100%;
+    border-bottom: 1px solid #EBEEF5;
+    transition: all 0.3s linear;
+
+    &__left {
+        width: calc(100% - 300px);
+        height: 50px;
+    }
+
+    &__right {
+        @include header_font_color();
+        padding: 0 15px 0 0;
+    }
+}
+
+.header-operation-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &__item {
+        height: 50px;
+        line-height: 50px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+
+        .el-icon-switch-button {
+            font-size: $font_huge;
+            margin-top: 13px;
+        }
+
+        .operation-notify {
+            font-size: $font_huge;
+            height: 40px;
+            line-height: 40px;
+
+            .el-badge__content {
+                padding: 0 4px;
+                top: 8px;
+            }
+        }
+
+        .divider {
+            height: 100%;
+            padding: 0 20px;
+            position: relative;
+
+            &:after {
+                position: absolute;
+                height: 30%;
+                top: 50%;
+                transform: translateY(-50%);
+                content: '';
+                display: block;
+                width: 1px;
+                @include header_font_color(true);
+            }
+        }
+    }
+}
+
+.header-custom-el-tabs {
+    .el-tabs__content {
+        display: none;
+    }
+
+    .el-tabs__header {
+        margin: 0;
+
+        .el-tabs__nav-wrap {
+            &:after {
+                display: none;
+            }
+        }
+
+        .el-tabs__active-bar {
+            display: none;
+        }
+
+        .is-scrollable {
+            &:after {
+                display: none;
+            }
+        }
+
+        .el-tabs__nav {
+            .el-tabs__item {
+                @include header_font_color();
+                height: 50px;
+                line-height: 50px;
+                padding: 0 20px;
+
+                &.is-active {
+                    @include header_bg_color--active()
+                }
+            }
+        }
+    }
+}

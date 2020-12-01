@@ -1,12 +1,27 @@
 <template>
   <div class="temp-layout">
-    layout
-    <router-view />
+    <temp-header />
+    <temp-footer />
+    <temp-main />
+    <temp-tabbar />
+    <temp-sidebar />
   </div>
 </template>
 
 <script lang="ts">
-import {Vue} from 'vue-class-component';
+import {Vue, Options} from 'vue-class-component';
+import {TempFooter, TempHeader, TempMain, TempTabbar, TempSidebar} from './components';
+
+@Options({
+    components: {
+        TempFooter,
+        TempHeader,
+        TempMain,
+        TempTabbar,
+        TempSidebar
+    }
+})
 export default class Layout extends Vue {
+  
 }
 </script>

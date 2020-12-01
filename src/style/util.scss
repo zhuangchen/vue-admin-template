@@ -1,0 +1,51 @@
+// 清除浮动
+.clearboth {
+  *zoom: 1;
+
+  &::before {
+    content: " ";
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+}
+// 浮动
+.temp-float {
+  &--left {
+    float: left;
+  }
+
+  &--right {
+    float: right;
+  }
+}
+
+// 显示和隐藏
+.temp-display {
+  &--none {
+    display: none;
+  }
+
+  &--block {
+    display: block;
+  }
+}
+
+// 文字居中
+.temp-text-align {
+  &--center {
+    text-align: center;
+  }
+
+  &--left {
+    text-align: left;
+  }
+
+  &--right {
+    text-align: right;
+  }
+}

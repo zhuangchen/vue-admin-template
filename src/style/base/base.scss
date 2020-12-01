@@ -1,0 +1,37 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+  min-width: 1280px;
+}
+
+body {
+  font-size: 12px;
+  height: 100%;
+  overflow: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  color: #666;
+  background: #f5f6fa;
+}
+
+#app {
+  height: 100%;
+}
+
+/* 火狐 input框 number类型 去箭头 */
+input {
+  -moz-appearance: textfield;
+
+  /* 谷歌 input框 number类型 去箭头 */
+  & ::-webkit-outer-spin-button,
+  & ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}

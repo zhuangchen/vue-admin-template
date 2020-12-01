@@ -43,5 +43,22 @@ module.exports = {
         secure: false,
       }
     }
+  },
+  chainWebpack: config => {
+    // 分析
+    // config.when(process.env.use_analyzer === 'true', config =>
+    //   config.plugin('webpack-bundle-analyzer').use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
+    // )
+    const oneOfsMap = config.module.rule('scss').oneOfs.store
+    oneOfsMap.forEach(item => {
+      item
+        .use('sass-resources-loader')
+        .loader('sass-resources-loader')
+        .options({
+          // Or array of paths
+          resources: ['./src/style/variables/_font-size.scss']
+        })
+        .end()
+    })
   }
 }
