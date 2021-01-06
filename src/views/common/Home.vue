@@ -1,5 +1,5 @@
 <template>
-  122121
+  <temp-slider :max="3" />
 </template>
 
 <script lang="ts">

@@ -96,22 +96,6 @@ interface ISliderOption {
   leftBgDescription?: string;   // 左侧背景描述
   rightBgDescription?: string;   // 右侧背景描述
 }
-console.log(ref(0));
-console.log(reactive({a: 1}));
-const c  = defineComponent({
-    props: {
-    },
-    setup () {
-        const computedPointerValue = ref<number>(0);
-        const barStyle = ref<any>(null);
-        const initSliderBarLeft = ref<number>(0);
-        const dragging = ref<boolean>(false);
-        const startX = ref<number>(0);
-        return {
-            computedPointerValue
-        }; 
-    }
-});
 export default class TempSlider<p=ISliderOption, max=number> extends Vue {
   public max: number = 7
   private computedPointerValue: number = 0
