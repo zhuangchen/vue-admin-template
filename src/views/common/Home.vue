@@ -1,9 +1,13 @@
 <template>
-  主页
+  122121
 </template>
 
 <script lang="ts">
-import { Vue } from 'vue-class-component';
+import { Vue, Options } from 'vue-class-component';
+@Options({
+    name: 'Home'
+})
+export default class App extends Vue {
 
-export default class App extends Vue {}
+}
 </script>

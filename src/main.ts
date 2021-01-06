@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import elementComponents from '@/components/element';
+import commonComponents from '@/components/common';
 import router from '@/router';
 import App from './App.vue';
 import store from '@/store';
@@ -11,5 +12,9 @@ const app = createApp(App);
 elementComponents.forEach((component) => {
     app.use(component as any);
 });
+commonComponents.forEach((component) => {
+    app.use(component as any);
+});
+console.log(app);
 app.use(store).use(router);
 app.mount('#app');

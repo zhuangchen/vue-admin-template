@@ -4,9 +4,13 @@
   </div>
 </template>
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import { Options, prop, Vue } from 'vue-class-component';
 
-@Options({name: 'TempFooter'})
+@Options(
+    {
+        name: 'TempFooter'
+    }
+)
 export default class TempFooter extends Vue {
   private msg: string = 'Copyright ©xxxxxxx.com, All Rights Reserved.';
 }
