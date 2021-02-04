@@ -1,0 +1,104 @@
+// header样式
+$temp-header-background-color:#048cff; // 头部背景色
+$temp-header-hover-background-color: rgba(255, 255, 255, 0.1); // 头部导航项活动hover颜色
+$temp-header-font-color:#fff;  // 头部字体颜色
+$temp-header-active-font-color:#00ffd8; // 头部活动字体颜色
+$temp-header-height:50px; // 头部固定高度
+.temp-header {
+  width: 100%;
+  height: $temp-header-height;
+  line-height: $temp-header-height;
+}
+
+.temp-header-menu__title {
+  color: $temp-header-font-color;
+}
+
+.temp-header-menu {
+  background-color: $temp-header-background-color;
+
+  &.el-menu--horizontal {
+    border-bottom: none;
+  }
+
+  .temp-header-menu__item {
+    line-height: $temp-header-height;
+    height: $temp-header-height;
+    background-color: $temp-header-background-color;
+
+    &:hover,
+    &:focus {
+      background-color: $temp-header-hover-background-color !important;
+    }
+
+    &.is-active {
+      .temp-header-menu__title {
+        color: $temp-header-active-font-color;
+      }
+
+      border-bottom: 2px solid $temp-header-active-font-color;
+    }
+  }
+
+  .temp-header-menu__submenu {
+    line-height: $temp-header-height;
+    height: $temp-header-height;
+    background-color: $temp-header-background-color;
+
+    .el-submenu__title {
+      line-height: $temp-header-height;
+      height: $temp-header-height;
+
+      .el-submenu__icon-arrow {
+        color: #fff;
+      }
+
+      &:hover,
+      &.focus {
+        background-color: $temp-header-hover-background-color;
+      }
+    }
+
+    &.is-active {
+      .temp-header-menu__title {
+        color: $temp-header-active-font-color;
+      }
+
+      .el-submenu__title {
+        .el-submenu__icon-arrow {
+          color: $temp-header-active-font-color;
+        }
+
+        border-bottom: 2px solid $temp-header-active-font-color;
+      }
+    }
+  }
+}
+
+.temp-header-menu__popper {
+  .el-menu {
+    background-color: $temp-header-background-color;
+
+    .el-submenu {
+      .el-submenu__title {
+        background-color: $temp-header-background-color;
+
+        .el-submenu__icon-arrow {
+          color: #fff;
+        }
+
+        &:hover {
+          background-color: $temp-header-hover-background-color;
+        }
+      }
+    }
+
+    .el-menu-item {
+      background-color: $temp-header-background-color;
+
+      &:hover {
+        background-color: $temp-header-hover-background-color;
+      }
+    }
+  }
+}

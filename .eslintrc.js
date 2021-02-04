@@ -5,7 +5,7 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true
-    },
+    }
   },
   extends: [
     '@vue/typescript',

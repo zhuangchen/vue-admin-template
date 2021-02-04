@@ -1,5 +1,5 @@
 <template>
-  <temp-slider :max="3" />
+  shouye
 </template>
 
 <script lang="ts">

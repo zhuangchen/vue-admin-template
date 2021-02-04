@@ -1,0 +1,25 @@
+.temp-layout {
+  position: relative;
+  height: 100%;
+
+  &__left {
+    position: absolute;
+    height: 100%;
+  }
+
+  &__right {
+    position: absolute;
+    margin-left: 180px;
+    width: 100%;
+  }
+
+  &--collapse {
+    .temp-layout__left {
+      width: 50px;
+    }
+
+    .temp-layout__right {
+      margin-left: 50px;
+    }
+  }
+}

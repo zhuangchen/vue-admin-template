@@ -1,7 +1,7 @@
 <template>
   <template v-for="item in topMenuItems">
     <el-menu-item
-      v-if="!item.subMenus || !Array.isArray(item.subMenus) || (!Array.isArray(item.subMenus) && item.subMenus.length === 0)"
+      v-if="!item.subMenu || !Array.isArray(item.subMenu) || (!Array.isArray(item.subMenu) && item.subMenu.length === 0)"
       :key="item.id"
       class="temp-header-menu__item"
       :index="item.id"
@@ -20,7 +20,7 @@
       >
         <span class="temp-header-menu__title">{{ item.name }}</span>
       </template>
-      <top-menu-item :top-menu-items="item.subMenus" />
+      <top-menu-item :top-menu-items="item.subMenu" />
     </el-submenu>
   </template>
 </template>
@@ -32,7 +32,7 @@ import { ITopMenuItem } from '@/model/menu';
     {
         props: {
             topMenuItems: {
-                type: Object as PropType<ITopMenuItem>,
+                type: Array as PropType<ITopMenuItem[]>,
                 default: () => ([])
             }
         },

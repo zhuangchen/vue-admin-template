@@ -1,0 +1,10 @@
+// 页脚样式
+$temp-footer-background-color:#272727; // 背景色
+$temp-footer-font-color: rgba(255, 255, 255, 0.7); // 字体颜色
+.temp-footer {
+  padding: 10px 0;
+  font-size: $font_little;
+  text-align: center;
+  background: $temp-footer-background-color;
+  color: $temp-footer-font-color;
+}

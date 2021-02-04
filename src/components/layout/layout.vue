@@ -1,10 +1,13 @@
 <template>
-  <div class="temp-layout">
-    <temp-header />
-    <temp-footer />
-    <temp-main />
-    <temp-tabbar />
-    <temp-sidebar />
+  <div :class="[collapse ? 'temp-layout temp-layout--collapse' : 'collapse']">
+    <div class="temp-layout__left">
+      <temp-sidebar @sidebar-collapse="handleSidebarCollapse" />
+    </div>
+    <div class="temp-layout__right">
+      <temp-header />
+      <temp-tabbar />
+      <temp-main />
+    </div>
   </div>
 </template>
 
@@ -22,6 +25,9 @@ import {TempFooter, TempHeader, TempMain, TempTabbar, TempSidebar} from './compo
     }
 })
 export default class Layout extends Vue {
-  
+    collapse: boolean = false
+    handleSidebarCollapse(collapse:boolean) {
+        this.collapse = collapse;
+    }
 }
 </script>

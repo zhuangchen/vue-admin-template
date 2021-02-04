@@ -1,22 +1,5 @@
-// header样式
-.temp-header-menu {
-  background-color: rgba(0, 33, 64, 1) !important;
-
-  &__item {
-    background-color: rgba(0, 33, 64, 1) !important;
-  }
-}
-
-.temp-header-menu__popper {
-  .el-menu {
-    background-color: rgba(0, 33, 64, 1);
-  }
-
-  .el-submenu__title {
-    background-color: rgba(0, 33, 64, 1) !important;
-  }
-}
-
-.temp-header-menu__title {
-  color: #fff;
-}
+@import 'components/header';
+@import 'components/footer';
+@import 'components/sidebar';
+@import 'components/tabbar';
+@import 'components/wrap';

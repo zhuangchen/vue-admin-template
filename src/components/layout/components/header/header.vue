@@ -39,11 +39,11 @@ export default class TempHeader extends Vue {
           {
               id: '3',
               name: '菜单3',
-              subMenus: [
+              subMenu: [
                   {
                       id: '3-1',
                       name: '菜单3-1',
-                      subMenus: [
+                      subMenu: [
                           {
                               id: '3-1-1',
                               name: '菜单3-1-1'

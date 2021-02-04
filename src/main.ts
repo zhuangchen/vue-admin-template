@@ -15,6 +15,5 @@ elementComponents.forEach((component) => {
 commonComponents.forEach((component) => {
     app.use(component as any);
 });
-console.log(app);
 app.use(store).use(router);
 app.mount('#app');
