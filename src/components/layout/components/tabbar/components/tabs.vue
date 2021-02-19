@@ -1,11 +1,12 @@
 <script lang='ts'>
-import { h, defineComponent, ref, onMounted, onUpdated, provide, watch, nextTick, getCurrentInstance, ComputedRef, PropType, Ref, ComponentInternalInstance, VNode, Component, Fragment, KeygenHTMLAttributes } from 'vue';
+import { h, defineComponent, ref, onMounted, onUpdated, provide, watch, nextTick, getCurrentInstance, ComputedRef, PropType, Ref, ComponentInternalInstance, VNode, Component, Fragment, KeygenHTMLAttributes, proxyRefs } from 'vue';
 import TabNav from './tab-nav.vue';
 
 
 type BeforeLeave = (newTabName: string, oldTabName: string) => void | Promise<void> | boolean
 
 export interface IETabsProps {
+  enableContextMenu: boolean
   type: string
   activeName: string
   closable: boolean
@@ -60,6 +61,10 @@ export default defineComponent({
             type: String,
             default: ''
         },
+        enableContextMenu: {
+            type: Boolean,
+            default: false
+        },
         closable: Boolean,
         addable: Boolean,
         modelValue: {
@@ -77,10 +82,17 @@ export default defineComponent({
         },
         stretch: Boolean
     },
-    emits: ['tab-click', 'edit', 'tab-remove', 'tab-add', 'input', 'update:modelValue'],
+    emits: ['tab-all-close', 'tab-other-close', 'tab-click', 'edit', 'tab-remove', 'tab-add', 'input', 'update:modelValue'],
     setup(props: IETabsProps, ctx) {
         const nav$ = ref<typeof TabNav>(TabNav);
         const currentName = ref(props.modelValue || props.activeName || '0');
+        let curMouseDownTab:any = null;
+        const clientX = ref('0px');
+        const clientY = ref('0px');
+        const isShowMenu = ref(false);
+        document.onclick = function(e) {
+            isShowMenu.value = false;
+        };
         provide<RootTabs>('rootTabs', {
             props,
             currentName
@@ -128,7 +140,26 @@ export default defineComponent({
                 changeCurrentName(value);
             }
         };
-
+        const  handleCloseAllTabs = () => {
+            // 向父组件传出关掉其他标签栏的事件 传出为当前操作的标签栏
+            ctx.emit('tab-all-close', curMouseDownTab);
+        };
+        const  handleCloseOtherTabs = () => {
+            // 向父组件传出关掉全部标签栏的事件 传出为当前操作的标签栏
+            ctx.emit('tab-other-close', curMouseDownTab);
+        };
+        const  handleTabMouseDown = (tab:Tab, tabName:string, event:MouseEvent) => {
+            curMouseDownTab = tab;
+            if (tab.disabled) return;
+            if (event.button === 2) {
+                // console.log(`y:${this.clientY},x:${this.clientX}`) for debug
+                clientX.value = event.clientX + 10 + 'px';
+                clientY.value = event.clientY + 'px';
+                isShowMenu.value = true;
+            } else {
+                return;
+            }
+        }; 
         const handleTabClick = (tab:Tab, tabName:string, event:Event) => {
             if(tab.disabled) return;
             setCurrentName(tabName);
@@ -144,9 +175,15 @@ export default defineComponent({
 
         return {
             nav$,
+            handleTabMouseDown,
             handleTabClick,
             handleTabRemove,
-            currentName
+            currentName,
+            isShowMenu,
+            clientX,
+            clientY,
+            handleCloseAllTabs,
+            handleCloseOtherTabs
         };
 
     },
@@ -154,16 +191,56 @@ export default defineComponent({
     render(){
         let {
             type,
+            enableContextMenu,
             handleTabClick,
             handleTabRemove,
+            handleTabMouseDown,
+            handleCloseAllTabs,
+            handleCloseOtherTabs,
             currentName,
             tabs,
             editable,
             tabPosition,
-            stretch
+            stretch,
+            isShowMenu,
+            clientX,
+            clientY
         } = this;
  
-
+        const contextMenu = h(
+            'div',
+            {
+                style: {
+                    display: isShowMenu ? 'block' : 'none',
+                    left: clientX,
+                    top: clientY
+                },
+                class: ['el-tabs__menu']
+            },
+            h(
+                'ul',
+                {
+                    class: ['el-tabs__menu__ul']
+                },
+                [ 
+                    h(
+                        'li',
+                        {
+                            onClick: handleCloseOtherTabs,
+                            class: ['el-tabs__menu__li']
+                        },
+                        ['关闭其他标签']
+                    ), 
+                    h(
+                        'li',
+                        {
+                            onClick: handleCloseAllTabs,
+                            class: ['el-tabs__menu__li']
+                        },
+                        ['关闭所有标签']
+                    )]
+            )
+        );
         const header = h(
             'div',
             {
@@ -180,7 +257,8 @@ export default defineComponent({
                         stretch,
                         ref: 'nav$',
                         onTabClick: handleTabClick,
-                        onTabRemove: handleTabRemove
+                        onTabRemove: handleTabRemove,
+                        onTabMouseDown: handleTabMouseDown
                     }
                 )
             ]
@@ -190,6 +268,12 @@ export default defineComponent({
         return h(
             'div',
             {
+                onContextmenu: (event: Event) => {
+                    if(enableContextMenu){
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                },
                 class: {
                     'el-tabs': true,
                     'el-tabs--card': type === 'card',
@@ -197,7 +281,7 @@ export default defineComponent({
                     'el-tabs--border-card': type === 'border-card'
                 }
             },
-            tabPosition !== 'bottom' ? [header] : [ header]
+            isShowMenu ? [header, contextMenu] : [header]
         );
     }
 });

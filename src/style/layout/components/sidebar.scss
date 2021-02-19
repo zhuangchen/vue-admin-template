@@ -1,6 +1,6 @@
 // 菜单宽度
-$temp-sidebar-width: 180px;
-$temp-sidebar-width--collapse: 50px;
+$temp-sidebar-width: 100%;
+$temp-sidebar-width--collapse: 100%;
 
 // 菜单头部颜色
 $temp-sidebar-header-background-color: #048cff;
@@ -12,15 +12,87 @@ $temp-sidebar-footer-font-color: #fff;
 $temp-sidebar-footer-height: 35px;
 
 // 菜单体
-$temp-sidebar-body-background-color: rgb(84, 92, 100);
+$temp-sidebar-body-background-color: #1f2d3d;
+
+.temp-sidebar-menu__popper {
+  .el-menu-item,
+  .el-submenu__title {
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.2) !important;
+    }
+  }
+}
+
+.temp-sidebar-menu {
+  width: 100%;
+  opacity: 1 !important;
+  transition: none !important;
+
+  .el-menu {
+    border: none;
+  }
+
+  .temp-sidebar-menu__submenu {
+    .el-submenu__title {
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.2) !important;
+      }
+    }
+  }
+
+  .temp-sidebar-menu__item {
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.2) !important;
+    }
+  }
+
+  .el-submenu {
+    .el-menu {
+      background-color: #1f2d3d !important;
+    }
+
+    .el-menu-item {
+      background-color: #1f2d3d !important;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.2) !important;
+      }
+    }
+  }
+}
 
 .temp-sidebar {
   width: $temp-sidebar-width;
   height: 100%;
   position: relative;
 
-  .el-menu {
-    border: none;
+  &.temp-sidebar--collapse {
+    width: $temp-sidebar-width--collapse;
+
+    .el-menu--collapse {
+      width: $temp-sidebar-width--collapse;
+
+      .el-submenu,
+      .el-menu-item {
+        padding: 0 !important;
+        position: relative !important;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.2) !important;
+        }
+
+        >div {
+          text-align: center;
+          padding: 0 !important;
+        }
+      }
+
+      .el-submenu__title {
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.2) !important;
+        }
+      }
+    }
   }
 
   &__body {
@@ -33,31 +105,13 @@ $temp-sidebar-body-background-color: rgb(84, 92, 100);
     bottom: $temp-sidebar-footer-height;
   }
 
-  &.temp-sidebar--collapse {
-    width: $temp-sidebar-width--collapse;
-
-    .el-menu--collapse {
-      width: $temp-sidebar-width--collapse;
-
-      .el-submenu,
-      .el-menu-item {
-        padding: 0 !important;
-        position: relative;
-
-        >div {
-          text-align: center;
-          padding: 0 !important;
-        }
-      }
-    }
-  }
-
   &__header {
     position: absolute;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1;
+    margin: 0;
     font-size: $font_medium_s;
     text-align: center;
     color: $temp-sidebar-header-font-color;
@@ -70,6 +124,7 @@ $temp-sidebar-body-background-color: rgb(84, 92, 100);
   }
 
   &__footer {
+    cursor: pointer;
     z-index: 1;
     position: absolute;
     bottom: 0;

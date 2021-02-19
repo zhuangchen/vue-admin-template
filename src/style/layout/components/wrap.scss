@@ -3,14 +3,16 @@
   height: 100%;
 
   &__left {
-    position: absolute;
+    width: 200px;
     height: 100%;
+    position: absolute;
+    transition: all 0.3s;
   }
 
   &__right {
-    position: absolute;
-    margin-left: 180px;
-    width: 100%;
+    position: relative;
+    margin-left: 200px;
+    transition: all 0.3s;
   }
 
   &--collapse {

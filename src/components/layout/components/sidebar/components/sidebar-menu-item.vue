@@ -5,7 +5,9 @@
       :key="item.id"
       class="temp-sidebar-menu__group"
     >
-      <template #title>
+      <template
+        #title
+      >
         <i
           v-if="item.icon"
           :class="item.icon"

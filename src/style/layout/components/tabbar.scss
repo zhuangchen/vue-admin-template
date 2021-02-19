@@ -1,5 +1,33 @@
 .temp-tabbar {
   .el-tabs__header {
     margin-bottom: 0;
+
+    .el-tabs__nav {
+      border-radius: 0;
+    }
+  }
+}
+
+.el-tabs__menu {
+  position: fixed;
+  cursor: pointer;
+  background: #fff;
+  z-index: 10000;
+  box-shadow: 0 2px 2px 2px #eee;
+
+  ul,
+  li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .el-tabs__menu__li {
+    padding: 10px 20px;
+    font-size: 14px;
+
+    &:hover {
+      background: #f4f3f3;
+    }
   }
 }

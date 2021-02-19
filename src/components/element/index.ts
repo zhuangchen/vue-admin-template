@@ -5,7 +5,10 @@ import {
     ElSubmenu,
     ElPopper,
     ElTabs,
-    ElTabPane
+    ElTabPane,
+    ElDropdown,
+    ElDropdownItem,
+    ElDropdownMenu
 } from 'element-plus';
 export default [
     ElMenu,
@@ -14,5 +17,8 @@ export default [
     ElSubmenu,
     ElPopper,
     ElTabs,
-    ElTabPane
+    ElTabPane,
+    ElDropdown,
+    ElDropdownItem,
+    ElDropdownMenu
 ];

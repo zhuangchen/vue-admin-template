@@ -42,6 +42,10 @@ export default defineComponent({
             default: ''
         },
         editable: Boolean,
+        onTabMouseDown: {
+            type: Function as PropType<(tab: Tab, tabName: any, ev: MouseEvent) => void>,
+            default: NOOP
+        },
         onTabClick: {
             type: Function as PropType<(tab: Tab, tabName: any, ev: Event) => void>,
             default: NOOP
@@ -276,6 +280,7 @@ export default defineComponent({
             type,
             editable,
             stretch,
+            onTabMouseDown,
             onTabClick,
             onTabRemove,
             navStyle,
@@ -345,6 +350,7 @@ export default defineComponent({
                     'aria-selected': tab.active,
                     ref: `tab-${tabName}`,
                     tabindex: tabindex,
+                    onMousedown: (ev: MouseEvent) => {onTabMouseDown(tab, tabName, ev);},
                     onFocus: () => { setFocus(); },
                     onBlur: () => { removeFocus(); },
                     onClick: (ev:Event) => { removeFocus(); onTabClick(tab, tabName, ev); },

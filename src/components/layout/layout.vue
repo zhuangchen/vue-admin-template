@@ -1,5 +1,5 @@
 <template>
-  <div :class="[collapse ? 'temp-layout temp-layout--collapse' : 'collapse']">
+  <div :class="[collapse ? 'temp-layout temp-layout--collapse' : 'temp-layout']">
     <div class="temp-layout__left">
       <temp-sidebar @sidebar-collapse="handleSidebarCollapse" />
     </div>

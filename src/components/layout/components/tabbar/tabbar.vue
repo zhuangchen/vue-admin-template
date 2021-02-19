@@ -3,7 +3,10 @@
     <tabs
       v-model="activeTabName"
       :tabs="tabs"
+      :enable-context-menu="tabProps.enableContextMenu"
       :type="tabProps.type"
+      @tab-other-close="handleTabOtherClose"
+      @tab-all-close="handleTabAllClose"
       @tab-remove="handleTabRemove"
       @tab-click="handleTabClick"
     />
@@ -24,6 +27,7 @@ import tabs from './components/tabs.vue';
 export default class TempTabbar extends Vue {
   activeTabName: string = '2'
   tabProps: ITabPorps = {
+      enableContextMenu: true,
       type: 'card'
   }
   tabs:ITabItemProps[] = [
@@ -38,6 +42,12 @@ export default class TempTabbar extends Vue {
           closable: false
       }
   ]
+  handleTabOtherClose(curtab: ITabItemProps){
+      console.log('handleTabOtherClose', curtab);
+  }
+  handleTabAllClose(curtab: ITabItemProps){
+      console.log('handleTabAllClose', curtab);
+  }
   handleTabRemove(tab: ITabItemProps){
       console.log('handleTabRemove', tab);
   }

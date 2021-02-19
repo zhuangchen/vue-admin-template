@@ -1,5 +1,6 @@
 <template>
   <router-view />
+  <div id="subapp-viewport" />
 </template>
 
 <script lang="ts">

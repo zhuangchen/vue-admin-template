@@ -1,4 +1,4 @@
-import {createRouter, createWebHashHistory} from 'vue-router';
+import {createRouter, createWebHashHistory, createWebHistory} from 'vue-router';
 import commonRoutes from './common';
 // router instance
 let router = createRouter({

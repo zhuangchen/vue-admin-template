@@ -1,21 +1,21 @@
 <template>
   <div :class="['temp-sidebar', sidebarMenu.collapse ? 'temp-sidebar--collapse' : '']">
-    <div
+    <h1
       class="temp-sidebar__header"
       title="管理系统"
     >
       管理系统
-    </div>
+    </h1>
     <div class="temp-sidebar__body">
       <el-menu
         :collapse="sidebarMenu.collapse"
         :unique-opened="sidebarMenu.uniqueOpened"
         :default-active="sidebarMenu.defaultActive"
         class="temp-sidebar-menu"
-        background-color="#545c64"
-        text-color="#fff"
+        background-color="rgb(48, 65, 86)"
+        text-color="rgb(191, 203, 217)"
         :mode="sidebarMenu.mode"
-        active-text-color="#ffd04b"
+        active-text-color="rgb(64, 158, 255)"
       >
         <sidebar-menu-item
           :sidebar-menu-items="sidebarMenu.sidebarMenuItems"

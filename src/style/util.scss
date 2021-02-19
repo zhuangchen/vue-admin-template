@@ -1,20 +1,20 @@
-// 清除浮动
-.clearboth {
-  *zoom: 1;
-
-  &::before {
-    content: " ";
-    display: table;
-  }
-
-  &::after {
-    clear: both;
-    content: " ";
-    display: table;
-  }
-}
 // 浮动
 .temp-float {
+  &--clear {
+    *zoom: 1;
+
+    &::before {
+      content: " ";
+      display: table;
+    }
+
+    &::after {
+      clear: both;
+      content: " ";
+      display: table;
+    }
+  }
+
   &--left {
     float: left;
   }

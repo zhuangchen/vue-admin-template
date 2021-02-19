@@ -8,6 +8,12 @@ $temp-header-height:50px; // 头部固定高度
   width: 100%;
   height: $temp-header-height;
   line-height: $temp-header-height;
+  background-color: $temp-header-background-color;
+  color: #fff;
+
+  &__container {
+    padding: 0 10px;
+  }
 }
 
 .temp-header-menu__title {
@@ -98,6 +104,40 @@ $temp-header-height:50px; // 头部固定高度
 
       &:hover {
         background-color: $temp-header-hover-background-color;
+      }
+    }
+  }
+}
+
+.temp-header-function-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: $temp-header-height;
+
+  .function-item {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .function-user {
+    display: flex;
+    color: #fff;
+    cursor: pointer;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+    &__image {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 30px;
+        height: 30px;
+        border: 1px solid #f5f5f5;
+        border-radius: 50%;
       }
     }
   }
