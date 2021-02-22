@@ -14,7 +14,7 @@
 <script lang="ts">
 import {Vue, Options} from 'vue-class-component';
 import {TempFooter, TempHeader, TempMain, TempTabbar, TempSidebar} from './components';
-
+import { mapState, mapActions } from 'vuex';
 @Options({
     components: {
         TempFooter,
@@ -22,12 +22,20 @@ import {TempFooter, TempHeader, TempMain, TempTabbar, TempSidebar} from './compo
         TempMain,
         TempTabbar,
         TempSidebar
+    },
+    computed: mapState({
+        collapse: (state:any) => state.ui.isCollapseSidebar
+    }),
+    methods: {
+        ...mapActions([
+            'setSidebarStatus'
+        ])
     }
 })
 export default class Layout extends Vue {
-    collapse: boolean = false
-    handleSidebarCollapse(collapse:boolean) {
-        this.collapse = collapse;
+  
+    handleSidebarCollapse() {
+        (this as any).setSidebarStatus(!(this as any).collapse);
     }
 }
 </script>

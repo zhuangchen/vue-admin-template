@@ -4,7 +4,7 @@
       <el-dropdown>
         <div class="function-user">
           <div class="function-user__image">
-            <img src="../../../../../assets/logo.png">
+            <img :src="userInfo.avatar">
           </div>
           <div class="function-user__iocn">
             <i class="el-icon-arrow-down el-icon--right" />
@@ -25,9 +25,15 @@
 </template>
 <script lang="ts">
 import {Vue, Options} from 'vue-class-component';
+import { mapGetters } from 'vuex';
 @Options(
     {
-        name: 'FunctionList'
+        name: 'FunctionList',
+        computed: {
+            ...mapGetters({
+                userInfo: 'getUserInfo'
+            })
+        }
     }
 )
 export default class FunctionList extends Vue {

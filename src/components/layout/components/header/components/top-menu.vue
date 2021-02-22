@@ -1,65 +1,44 @@
 <template>
   <el-menu
-    :default-active="topMenu.defaultActive"
+    :default-active="defaultActive"
     mode="horizontal"
     class="temp-header-menu"
     @select="handleSelect"
   >
-    <top-menu-item :top-menu-items="topMenu.topMenuItems" />
+    <top-menu-item :top-menu-items="topMenuItems" />
   </el-menu>
 </template>
 <script lang="ts">
-import TopMenuItem from './components/top-menu-item.vue';
+import TopMenuItem from './top-menu-item.vue';
 import {Vue, Options} from 'vue-class-component';
 import {Ref, unref} from 'vue';
-import { ITopMenu } from '@/model/menu';
+import { mapGetters } from 'vuex';
 @Options(
     {
         name: 'TopMenu',
         components: {
             TopMenuItem
+        },
+        computed: {
+            ...mapGetters({
+                defaultActive: 'getCurrentTopMenuItemKey',
+                topMenuItems: 'getTopMenus'
+            })
+        },
+        watch: {
+            $route: {
+                immediate: true,
+                handler (n) {
+                    console.log(n);
+                }
+            }
         }
     }
 )
 export default class TopMenu extends Vue {
-  private topMenu: ITopMenu = {
-      defaultActive: '2',
-      mode: 'horizontal',
-      topMenuItems: [
-          {
-              id: '1',
-              name: '菜单1'
-          },
-          {
-              id: '2',
-              name: '菜单2'
-          },
-          {
-              id: '3',
-              name: '菜单3',
-              subMenu: [
-                  {
-                      id: '3-1',
-                      name: '菜单3-1',
-                      subMenu: [
-                          {
-                              id: '3-1-1',
-                              name: '菜单3-1-1'
-                          }
-                      ]
-                  }
-              ]
-          },
-          {
-              id: '4',
-              name: '菜单4'
-          }
-          
-      ]
-  }
-  handleSelect(index:string, pathIndex:Ref){
-      console.log('当前菜单项索引', index);
-      console.log('当请菜单项路径', unref(pathIndex));
-  }
+    handleSelect(index:string, pathIndex:Ref){
+        console.log('当前菜单项索引', index);
+        console.log('当请菜单项路径', unref(pathIndex));
+    }
 }
 </script>

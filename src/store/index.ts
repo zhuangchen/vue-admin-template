@@ -1,13 +1,15 @@
 import {createStore, createLogger} from 'vuex';
-import layout from './layout-module';
+import * as layout from './layout-module';
 import user from './user-module';
 import ui from './ui-module';
+import permission from './permission-module';
 const debug = process.env.NODE_ENV === 'development';
 const store = createStore({
     modules: {
         user,
         ui,
-        layout
+        permission,
+        ...layout
     },
     strict: debug,
     plugins: debug ? [createLogger({})] : []

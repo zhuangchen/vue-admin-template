@@ -1,20 +1,23 @@
 import {ActionTree, GetterTree, MutationTree} from 'vuex';
+interface IUIState {
+    isCollapseSidebar: boolean // 侧边栏是否折叠 
+}
 const Types = {
     SET_GUIDE_STATUS: 'SET_GUIDE_STATUS',
     SET_SIDEBAR_STATUS: 'SET_SIDEBAR_STATUS'
 };
-const state: IUI = {
+const state: IUIState = {
     isCollapseSidebar: false
 };
-const getters: GetterTree<IUI, any> = {
+const getters: GetterTree<IUIState, any> = {
     getSidebarStatus(state): boolean { return state.isCollapseSidebar; }
 };
-const mutations: MutationTree<IUI> = {
+const mutations: MutationTree<IUIState> = {
     [Types.SET_SIDEBAR_STATUS](state, status: boolean) {
         state.isCollapseSidebar = status;
     }
 };
-const actions: ActionTree<IUI, any> = {
+const actions: ActionTree<IUIState, any> = {
     setSidebarStatus(context, status: boolean): Promise<any> {
         return new Promise((resolve) => {
             context.commit(Types.SET_SIDEBAR_STATUS, status);

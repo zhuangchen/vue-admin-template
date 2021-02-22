@@ -1,22 +1,23 @@
 import httpServie from './http-service';
-import { AxiosResponse } from 'axios';
-const fetchUserById = (id: number) => {
-    interface IBackData {
-        data: any,
-        support: any
-    }
+import { IUser } from '@/model/user';
+// 获取用户信息
+const fetchUserInfo = () => {
     const axiosConfig = Object.assign({
-        url: '/api/users/' + id,
+        url: '/getUserInfo',
         method: 'get'
     });
-    return new Promise<IBackData>((resolve, reject) => {
+    return new Promise<IUser>((resolve, reject) => {
         httpServie(axiosConfig).then((res) => {
-            resolve(res.data);
+            if(res.data && res.data.result){
+                resolve(res.data.result);
+            } else {
+                reject();
+            }
         }, () => {
             reject();
         });
     });
 };
 export {
-    fetchUserById
+    fetchUserInfo
 };

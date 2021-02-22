@@ -1,5 +1,5 @@
 <template>
-  <div :class="['temp-sidebar', sidebarMenu.collapse ? 'temp-sidebar--collapse' : '']">
+  <div :class="['temp-sidebar', collapse ? 'temp-sidebar--collapse' : '']">
     <h1
       class="temp-sidebar__header"
       title="管理系统"
@@ -8,7 +8,7 @@
     </h1>
     <div class="temp-sidebar__body">
       <el-menu
-        :collapse="sidebarMenu.collapse"
+        :collapse="collapse"
         :unique-opened="sidebarMenu.uniqueOpened"
         :default-active="sidebarMenu.defaultActive"
         class="temp-sidebar-menu"
@@ -27,7 +27,7 @@
       class="temp-sidebar__footer"
       @click="onClickCollapseBtn"
     >
-      <i :class="!sidebarMenu.collapse ? 'el-icon-s-fold' : 'el-icon-s-unfold'" />
+      <i :class="!collapse ? 'el-icon-s-fold' : 'el-icon-s-unfold'" />
     </div>
   </div>
 </template>
@@ -35,19 +35,22 @@
 import { ISidebarMenu, ISidebarMenuItem } from '@/model/menu';
 import SidebarMenuItem from './components/sidebar-menu-item.vue';
 import {Vue, Options} from 'vue-class-component';
+import { mapState } from 'vuex';
 @Options(
     {
         name: 'TempSidebar',
         components: {
             SidebarMenuItem
         },
+        computed: mapState({
+            collapse: (state:any) => state.ui.isCollapseSidebar
+        }),
         emits: ['sidebar-collapse']
     }
 )
 export default class TempSidebar extends Vue {
     private sidebarMenu: ISidebarMenu = {
         defaultOpeneds: [],
-        collapse: false,
         uniqueOpened: true,
         collapseTransition: true,
         defaultActive: '1-1-1',
@@ -157,8 +160,7 @@ export default class TempSidebar extends Vue {
         console.log(menuItem);
     }
     onClickCollapseBtn () {
-        this.sidebarMenu.collapse = !this.sidebarMenu.collapse;
-        this.$emit('sidebar-collapse', this.sidebarMenu.collapse);
+        this.$emit('sidebar-collapse');
     }
 }
 </script>

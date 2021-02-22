@@ -5,7 +5,7 @@ export interface ITabPorps {
 }
 
 // 标签项属性
-export interface ITabItemProps {
+export interface ITabItem {
     key?: string
     tabName: string
     closable: boolean

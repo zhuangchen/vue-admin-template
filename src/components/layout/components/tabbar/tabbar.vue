@@ -13,7 +13,7 @@
   </div>
 </template>
 <script lang="ts">
-import {ITabPorps, ITabItemProps} from '@/model/tabbar';
+import {ITabPorps, ITabItem} from '@/model/tabbar';
 import {Vue, Options} from 'vue-class-component';
 import tabs from './components/tabs.vue';
 @Options(
@@ -30,7 +30,7 @@ export default class TempTabbar extends Vue {
       enableContextMenu: true,
       type: 'card'
   }
-  tabs:ITabItemProps[] = [
+  tabs:ITabItem[] = [
       {
           key: '1',
           tabName: 'tab1',
@@ -42,17 +42,17 @@ export default class TempTabbar extends Vue {
           closable: false
       }
   ]
-  handleTabOtherClose(curtab: ITabItemProps){
+  handleTabOtherClose(curtab: ITabItem){
       console.log('handleTabOtherClose', curtab);
   }
-  handleTabAllClose(curtab: ITabItemProps){
+  handleTabAllClose(curtab: ITabItem){
       console.log('handleTabAllClose', curtab);
   }
-  handleTabRemove(tab: ITabItemProps){
+  handleTabRemove(tab: ITabItem){
       console.log('handleTabRemove', tab);
   }
 
-  handleTabClick(tab: ITabItemProps){
+  handleTabClick(tab: ITabItem){
       console.log('handleTabClick', tab);
   }
 }
